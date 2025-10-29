@@ -1,0 +1,38 @@
+# Sensitive files
+*.env
+*.secret
+*_secret*
+*password*
+*token*
+*.key
+*.pem
+credentials.yml
+
+# Personal info
+*@oreki.io
+10.10.*
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backup files
+*.bak
+*.backup
+*_backup
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
