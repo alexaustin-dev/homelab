@@ -1,0 +1,37 @@
+api:
+  dashboard: true
+  insecure: true  # Dashboard only via secure route with auth
+
+entryPoints:
+  http:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: https
+          scheme: https
+  https:
+    address: ":443"
+
+serversTransport:
+  insecureSkipVerify: true  # Allows Traefik to proxy to services with self-signed certs
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false  # Only containers with traefik.enable=true will be exposed
+    network: proxy  # Use the proxy network for Docker containers
+  file:
+    filename: /config.yml
+    watch: true  # Auto-reload when config.yml changes
+
+certificatesResolvers:
+  cloudflare:
+    acme:
+      email: @@@@@@@@@@
+      storage: acme.json
+      dnsChallenge:
+        provider: cloudflare
+        resolvers:
+          - "1.1.1.1:53"
+          - "1.0.0.1:53"

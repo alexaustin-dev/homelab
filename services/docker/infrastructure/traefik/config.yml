@@ -1,0 +1,303 @@
+http:
+  # This file is for non-Docker services only
+  # Docker containers should use labels in Portainer
+  routers:
+    # Proxmox Host 1
+    proxmox1:
+      entryPoints:
+        - "https"
+      rule: "Host(`proxmox1.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: proxmox1
+
+    # Proxmox Host 2
+    proxmox2:
+      entryPoints:
+        - "https"
+      rule: "Host(`proxmox2.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: proxmox2
+
+    # Dream Machine
+    dreammachine:
+      entryPoints:
+        - "https"
+      rule: "Host(`dreammachine.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: dreammachine
+
+    # Wazuh
+    wazuh:
+      entryPoints:
+        - "https"
+      rule: "Host(`wazuh.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: wazuh
+
+    # File Server
+    fs001:
+      entryPoints:
+        - "https"
+      rule: "Host(`fs001.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: fs001
+
+
+    # n8n
+    n8n:
+      entryPoints:
+        - "https"
+      rule: "Host(`n8n.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: n8n
+
+    # Radarr
+    radarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`radarr.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: radarr
+    # Sonarr
+    sonarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`sonarr.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: sonarr
+    # Bazarr
+    bazarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`bazarr.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: bazarr
+    # Prowlarr
+    prowlarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`prowlarr.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: prowlarr
+    # Overseerr
+    overseerr:
+      entryPoints:
+        - "https"
+      rule: "Host(`overseerr.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: overseerr
+
+
+    # sabnzbd
+    sabnzbd:
+      entryPoints:
+        - "https"
+      rule: "Host(`sabnzbd.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: sabnzbd
+
+    # truenas
+    truenas:
+      entryPoints:
+        - "https"
+      rule: "Host(`truenas.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: truenas
+
+    # plex
+    plex:
+      entryPoints:
+        - "https"
+      rule: "Host(`plex.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: plex
+
+    # fileflows
+    fileflows:
+      entryPoints:
+        - "https"
+      rule: "Host(`fileflows.lab.oreki.io`)"
+      middlewares:
+        - default-headers
+      tls:
+        certResolver: cloudflare
+      service: fileflows
+
+
+  services:
+    # Proxmox Host 1
+    proxmox1:
+      loadBalancer:
+        servers:
+          - url: "https://10.10.100.11:8006"
+        passHostHeader: true
+
+    # Proxmox Host 2
+    proxmox2:
+      loadBalancer:
+        servers:
+          - url: "https://10.10.100.11:8006"
+        passHostHeader: true
+
+    # Dream Machine
+    dreammachine:
+      loadBalancer:
+        servers:
+          - url: "https://10.10.1.1"
+        passHostHeader: true
+
+    # File Server
+    fs001:
+      loadBalancer:
+        servers:
+          - url: "http://10.10.10.11:8888"
+        passHostHeader: true
+
+    # n8n
+    n8n:
+      loadbalancer:
+        servers:
+          - url: "http://10.10.10.10:5678"
+        passHostHeader: true
+
+
+    # Wazuh
+    wazuh:
+      loadBalancer:
+        servers:
+          - url: "https://10.10.10.100:443"
+        serversTransport: insecureTransport
+
+    # Radarr
+    radarr:
+      loadBalancer:
+        servers:
+          - url: "http://10.10.1.15:7878"
+        passHostHeader: true
+    # Sonarr
+    sonarr:
+      loadBalancer:
+        servers:
+          - url: "http://10.10.1.15:8989"
+        passHostHeader: true
+    # Bazarr
+    bazarr:
+      loadBalancer:
+        servers:
+          - url: "http://10.10.1.15:6767"
+        passHostHeader: true
+    # Prowlarr
+    prowlarr:
+      loadBalancer:
+        servers:
+          - url: "http://10.10.1.15:9696"
+        passHostHeader: true
+    # Overseerr
+    overseerr:
+      loadBalancer:
+        servers:
+          - url: "http://10.10.1.15:5055"
+        passHostHeader: true
+
+    # sabnzbd
+    sabnzbd:
+      loadBalancer:
+        servers:
+          - url: "http://10.10.1.15:8080"
+        passHostHeader: true
+
+    #truenas
+    truenas:
+      loadBalancer:
+        servers:
+          - url: "https://10.10.1.15"
+        serversTransport: insecureTransport
+        passHostHeader: true
+
+    # plex
+    plex:
+      loadBalancer:
+        servers:
+          - url: "http://10.10.10.10:32400"
+        passHostHeader: true
+
+    #fileflows
+    fileflows:
+      loadBalancer:
+        servers:
+          - url: "https://10.10.1.15:19200"
+        passHostHeader: true
+
+
+  serversTransports:
+    insecureTransport:
+      insecureSkipVerify: true
+
+  middlewares:
+    default-headers:
+      headers:
+        frameDeny: true
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 15552000
+        customFrameOptionsValue: SAMEORIGIN
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+
+    default-whitelist:
+      ipAllowList:
+        sourceRange:
+          - "10.0.0.0/8"
+          - "192.168.0.0/16"
+          - "172.16.0.0/12"
+
+    secured:
+      chain:
+        middlewares:
+          - default-whitelist
+          - default-headers
