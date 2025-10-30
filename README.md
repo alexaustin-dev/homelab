@@ -1,4 +1,4 @@
-# Homelab Infrastructure
+# 🏡 Homelab Infrastructure
 
 Documenting my homelab environment as I go. Learning more everyday.
 
@@ -13,7 +13,7 @@ I also utilize Claude in the creation of some scripts, usually in order to get i
 - [Host Specifications](hosts/README.md)
 - [Services](services/)
 
-## Network Infrastructure
+## 🌐 Network Infrastructure
 
 I run a Ubiquiti stack at home. While it is not my first choice as a networking vendor, the ease of use and price makes it a great choice to run in a home environment.
 
@@ -25,7 +25,7 @@ I run a Ubiquiti stack at home. While it is not my first choice as a networking 
 - **Wireless Access Points**
   - Ubiquiti U6 LR
 
-## Server Infrastructure
+## 📂 Server Infrastructure
 
 I currently run with 4 physical hosts
 
@@ -49,7 +49,7 @@ I currently run with 4 physical hosts
     The 3 Proxmox hosts are in a cluster but not currently setup for any HA or CEPH storage.
     The TrueNAS Host storage is  broken down into three ZFS pools, two of about 30~TB usable and one pool dedicated for storage for apps running off the host.
 
-## Network Overview
+## 🔃 Network Overview
 
 #### VLAN Configuration
 
@@ -82,7 +82,7 @@ Everything in my lab is a part of my Tailnet. I don't expose anything to the ext
 - [ ] Document network topology with interactive diagrams
 - [ ] Setup Kubernetes on one of my hosts
 
-## Contributing
+## 🤲 Contributing
 
 This is a personal learning project, but I welcome:
 
