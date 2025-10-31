@@ -1,4 +1,4 @@
-## Overview
+# Overview
 
 Main storage server running TrueNAS SCALE Community Edition. Hosts all media management services (arr stack) as native TrueNAS applications for optimal performance.
 
@@ -21,7 +21,7 @@ Main storage server running TrueNAS SCALE Community Edition. Hosts all media man
 
 - **Primary IP:** 10.10.1.15
 - **Hostname:** truenas
-- **Web UI:** https://truenas.lab.oreki.io/
+- **Web UI:** <https://truenas.lab.oreki.io/>
 
 ---
 
@@ -33,23 +33,30 @@ All running as TrueNAS SCALE Apps on pool1:
 
 1. **TrueNAS - Sonarr** - TV show automation
 
-   - URL: https://sonarr.lab.oreki.io
+   - URL: <https://sonarr.lab.oreki.io>
+
 2. **TrueNAS - Radarr** - Movie automation
 
-   - URL: https://radarr.lab.oreki.io
+   - URL: <https://radarr.lab.oreki.io>
+
 3. **TrueNAS - Bazarr** - Subtitle automation
 
-   - URL: https://bazarr.lab.oreki.io
+   - URL: <https://bazarr.lab.oreki.io>
+
 4. **TrueNAS - Prowlarr** - Indexer manager
 
-   - URL: https://prowlarr.lab.oreki.io
+   - URL: <https://prowlarr.lab.oreki.io>
+
 5. **TrueNAS - SABnzbd** - Usenet downloader
 
-   - URL: https://sabnzbd.lab.oreki.io
+   - URL: <https://sabnzbd.lab.oreki.io>
+
 6. **TrueNAS - Overseerr** - Media request system
 
-   - URL: https://overseerr.lab.oreki.io
+   - URL: <https://overseerr.lab.oreki.io>
+
 7. **TrueNAS - Recyclarr** - Quality profile manager
 
    - Syncs TRaSH guides to Sonarr/Radarr
+
 8. **TrueNAS - Flaresolverr** - Cloudflare bypass

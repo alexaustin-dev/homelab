@@ -1,6 +1,6 @@
-## Storage Structure
+# Storage Structure
 
-### Media Dataset (pool1/media)
+## Media Dataset (pool1/media)
 
 ```
 /mnt/pool1/media/
@@ -10,6 +10,7 @@
 ```
 
 **NFS Exports:**
+
 - `/mnt/pool1/media/tv`
 - `/mnt/pool1/media/movies`
 
@@ -24,4 +25,3 @@
 ├── sabnzbd/         # SABnzbd config and queue
 └── overseerr/       # Overseerr config and database
 ```
-

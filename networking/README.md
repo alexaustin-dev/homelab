@@ -96,9 +96,8 @@ Complete VLAN segmentation for security and organization.
 
 ### Quick Reference
 
-
 | VLAN           | Tag      | Subnet         | Purpose          | Key Devices              |
-| ---------------- | ---------- | ---------------- | ------------------ | -------------------------- |
+| -------------- | -------- | -------------- | ---------------- | ------------------------ |
 | **Default**    | Untagged | 10.10.1.0/24   | Trusted devices  | PCs, TrueNAS             |
 | **Servers**    | 10       | 10.10.10.0/24  | Internal servers | docker VM, fileserver001 |
 | **WiFi**       | 20       | 10.10.20.0/24  | Wireless clients | Phones, tablets, laptops |
@@ -159,7 +158,7 @@ Complete VLAN segmentation for security and organization.
 
 ### Bandwidth
 
-- **ISP Connection:** 1000  Mbps Down / 50 Mbps Up
+- **ISP Connection:** 1000 Mbps Down / 50 Mbps Up
 - **Internal Switching:** 1 Gbps (Cat6)
 - **Server Uplinks:** 1-10 Gbps
 

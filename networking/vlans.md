@@ -1,3 +1,5 @@
+# VLAN Overview
+
 Network segmentation via VLANs for security, performance, and organization.
 
 ## VLAN Configuration

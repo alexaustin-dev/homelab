@@ -9,6 +9,7 @@ I utilize Claude in the organizing of notes and ideas, specifically for helping 
 I also utilize Claude in the creation of some scripts, usually in order to get ideas off the floor that I can then finetune and tweak for my needs.
 
 ## 🚀 Quick Links
+
 - [Network Documentation](networking/README.md)
 - [Host Specifications](hosts/README.md)
 - [Services](services/)
@@ -29,11 +30,11 @@ I run a Ubiquiti stack at home. While it is not my first choice as a networking 
 
 I currently run with 4 physical hosts
 
-#### Proxmox Hosts
+### Proxmox Hosts
 
 - 2x Minisforum MS-A2
-  - AMD Ryzen  9 9955HX
-  - 64GB DDR5  5600 MHZ
+  - AMD Ryzen 9 9955HX
+  - 64GB DDR5 5600 MHZ
   - 1 TB SSD
 - 1x Protectili Vault VP4760
   - Intel i7-10810
@@ -47,15 +48,14 @@ I currently run with 4 physical hosts
   - 128GB DDR4
   - 96TB SAS HDD
     The 3 Proxmox hosts are in a cluster but not currently setup for any HA or CEPH storage.
-    The TrueNAS Host storage is  broken down into three ZFS pools, two of about 30~TB usable and one pool dedicated for storage for apps running off the host.
+    The TrueNAS Host storage is broken down into three ZFS pools, two of about 30~TB usable and one pool dedicated for storage for apps running off the host.
 
 ## 🔃 Network Overview
 
-#### VLAN Configuration
-
+### VLAN Configuration
 
 | VLAN Name      | Tag      | Subnet         | Purpose                                    |
-| ---------------- | ---------- | ---------------- | -------------------------------------------- |
+| -------------- | -------- | -------------- | ------------------------------------------ |
 | **Default**    | Untagged | 10.10.1.0/24   | Home PCs and trusted devices               |
 | **Servers**    | 10       | 10.10.10.0/24  | Internal servers                           |
 | **WiFi**       | 20       | 10.10.20.0/24  | Phones, tablets, laptops                   |
@@ -101,7 +101,7 @@ This repository contains documentation and configuration files for my homelab in
 **Important security considerations:**
 
 - All services are accessible **only via Tailscale** - no ports exposed to public internet
-- Internal IPs (10.10.x.x) and domain names (*.lab.oreki.io) are published for educational purposes
+- Internal IPs (10.10.x.x) and domain names (\*.lab.oreki.io) are published for educational purposes
 - All credentials and secrets use environment variables
 
 If you find sensitive information accidentally committed, please open an issue immediately.

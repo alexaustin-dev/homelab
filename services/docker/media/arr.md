@@ -1,4 +1,4 @@
-## Overview
+# Overview
 
 Running a typical stack of -arr services to automate the process of downloading and storing media, etc.
 
@@ -12,6 +12,3 @@ Running a typical stack of -arr services to automate the process of downloading 
 - **Overseerr:** Request system
 - **Recyclarr:** AProfile Manager
 - **Flaresolverr:** Cloudflare bypass
-
-
-

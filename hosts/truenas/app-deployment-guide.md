@@ -65,9 +65,8 @@ chmod -R 755 /mnt/pool3/appdata/{app_name}
 
 Configure **Host Path** → **Mount Path** mappings:
 
-
 | Purpose   | Host Path (TrueNAS)          | Mount Path (Container) |
-| ----------- | ------------------------------ | ------------------------ |
+| --------- | ---------------------------- | ---------------------- |
 | Config    | `/mnt/pool3/appdata/sonarr`  | `/config`              |
 | TV Shows  | `/mnt/pool1/media/tv`        | `/tv`                  |
 | Downloads | `/mnt/pool1/media/downloads` | `/downloads`           |
@@ -116,7 +115,9 @@ Some apps require additional configuration:
    ```
    http://{truenas_ip}:{app_port}
    ```
+
    Example: `http://10.10.1.15:8989` (Sonarr)
+
 2. Complete initial setup wizard (if applicable)
 3. Configure paths to match Mount Paths from Step 3
 4. Test functionality

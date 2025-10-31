@@ -6,9 +6,8 @@ Documentation for all physical servers in the homelab infrastructure. Shoutout t
 
 ## 📊 Fleet Overview
 
-
 | Hostname          | Model            | CPU                      | RAM        | Storage   | Role           | Status    |
-| ------------------- | ------------------ | -------------------------- | ------------ | ----------- | ---------------- | ----------- |
+| ----------------- | ---------------- | ------------------------ | ---------- | --------- | -------------- | --------- |
 | **oreki-pve-001** | Minisforum MS-A2 | Ryzen 9 9955HX (16C/32T) | 64GB DDR5  | 1TB NVMe  | Proxmox Node   | 🟢 Active |
 | **oreki-pve-002** | Minisforum MS-A2 | Ryzen 9 9955HX (16C/32T) | 64GB DDR5  | 1TB NVMe  | Proxmox Node   | 🟢 Active |
 | **proxmox2**      | Protectli VP4760 | i7-10810U (6C/12T)       | 32GB DDR4  | 832GB SSD | Proxmox Node   | 🟢 Active |
@@ -32,13 +31,13 @@ Documentation for all physical servers in the homelab infrastructure. Shoutout t
 
 **Management URLs:**
 
-- https://proxmox2.lab.oreki.io:8006
-- https://pve001.lab.oreki.io:8006
-- https://pve002.lab.oreki.io:8006
+- <https://proxmox2.lab.oreki.io:8006>
+- <https://pve001.lab.oreki.io:8006>
+- <https://pve002.lab.oreki.io:8006>
 
 ### Node Details
 
-#### oreki-pve-001 (10.10.100.12) 
+#### oreki-pve-001 (10.10.100.12)
 
 **Model:** Minisforum MS-A2
 **Documentation:** [oreki-pve-001.md](oreki-pve-001.md)
@@ -129,9 +128,8 @@ Documentation for all physical servers in the homelab infrastructure. Shoutout t
 
 **Storage Pools:**
 
-
 | Pool  | Configuration   | Raw Size | Usable | Purpose              |
-| ------- | ----------------- | ---------- | -------- | ---------------------- |
+| ----- | --------------- | -------- | ------ | -------------------- |
 | pool1 | RAIDZ2 (8-wide) | ~36TB    | ~5.5TB | Media storage + apps |
 | pool2 | RAIDZ2 (7-wide) | ~36TB    | ~5.5TB | Available            |
 | pool3 | Single disk     | ~6TB     | ~5.5TB | Testing/scratch      |
@@ -148,7 +146,7 @@ Documentation for all physical servers in the homelab infrastructure. Shoutout t
 - `/mnt/pool1/media/tv` → docker VM (Plex)
 - `/mnt/pool1/media/movies` → docker VM (Plex)
 
-**Management:** https://truenas.lab.oreki.io
+**Management:** <https://truenas.lab.oreki.io>
 
 ---
 
@@ -156,9 +154,8 @@ Documentation for all physical servers in the homelab infrastructure. Shoutout t
 
 ### Power Consumption (Estimates, not actually tested)
 
-
 | Host          | Idle      | Typical   | Max       | Notes                  |
-| --------------- | ----------- | ----------- | ----------- | ------------------------ |
+| ------------- | --------- | --------- | --------- | ---------------------- |
 | oreki-pve-001 | ~25W      | ~45W      | ~65W      | Efficient AMD platform |
 | oreki-pve-002 | ~25W      | ~45W      | ~65W      | Efficient AMD platform |
 | proxmox2      | ~8W       | ~12W      | ~15W      | Very low power         |

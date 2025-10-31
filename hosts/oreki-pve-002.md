@@ -1,4 +1,4 @@
-## Overview
+# Overview
 
 Host for miscellaneous VMs.TB
 
@@ -11,7 +11,7 @@ Host for miscellaneous VMs.TB
 
 ## Network Configuration
 
-- **Primary IP:** 10.10.100.13  
+- **Primary IP:** 10.10.100.13
 - **Hostname:** oreki-pve-002
 - **Web UI:** https://pve001.lab.oreki.io/
 
