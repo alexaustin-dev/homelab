@@ -10,6 +10,11 @@ I also utilize Claude in the creation of some scripts, usually in order to get i
 
 ## 🚀 Quick Links
 
+- [Ansible Automation](ansible/README.md)
+- [Network Documentation](networking/README.md)
+- [Host Specifications](hosts/README.md)
+- [Services](services/)
+
 - [Network Documentation](networking/README.md)
 - [Host Specifications](hosts/README.md)
 - [Services](services/)

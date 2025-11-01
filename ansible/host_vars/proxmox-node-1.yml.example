@@ -1,0 +1,5 @@
+---
+# Example host vars - Create similar files for each Proxmox node
+proxmox_node_name: "proxmox-node-1"
+proxmox_node_ip: "192.168.1.10"
+proxmox_template_id: 9000

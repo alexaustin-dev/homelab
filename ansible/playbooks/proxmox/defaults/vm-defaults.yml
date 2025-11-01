@@ -1,0 +1,14 @@
+---
+# Default VM settings (can be overridden)
+default_vm_cores: 2
+default_vm_memory: 4096
+default_vm_disk_size: 50
+default_vm_network_bridge: "vmbr0"
+default_vm_network_tag: 10
+default_vm_gateway: "192.168.1.1"
+default_vm_nameserver: "192.168.1.1"
+default_vm_searchdomain: "lab.local"
+# VM credentials should be passed at runtime or set in vault
+# default_vm_username: "youruser"
+# default_vm_password: "set-this-securely"
+default_ssh_key_path: "~/.ssh/homelab_key.pub"

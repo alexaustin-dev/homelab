@@ -1,0 +1,56 @@
+---
+- name: Proxmox VM Creation Workflow
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - ../../group_vars/proxmox_hosts/vault.yml
+    - defaults/vm-defaults.yml
+
+  vars:
+    # Set final values (with defaults applied)
+    final_vm_cores: "{{ vm_cores | default(default_vm_cores) }}"
+    final_vm_memory: "{{ vm_memory | default(default_vm_memory) }}"
+    final_vm_disk_size: "{{ vm_disk_size | default(default_vm_disk_size) }}"
+    final_vm_network_bridge: "{{ vm_network_bridge | default(default_vm_network_bridge) }}"
+    final_vm_network_tag: "{{ vm_network_tag | default(default_vm_network_tag) }}"
+    final_vm_gateway: "{{ vm_gateway | default(default_vm_gateway) }}"
+    final_vm_nameserver: "{{ vm_nameserver | default(default_vm_nameserver) }}"
+    final_vm_searchdomain: "{{ vm_searchdomain | default(default_vm_searchdomain) }}"
+    final_vm_username: "{{ vm_username | default(default_vm_username) }}"
+    final_vm_password: "{{ vm_password | default(default_vm_password) }}"
+    final_ssh_key_path: "{{ ssh_key_path | default(default_ssh_key_path) }}"
+    ssh_public_key: "{{ lookup('file', final_ssh_key_path) }}"
+
+  tasks:
+    - name: Validate required parameters
+      assert:
+        that:
+          - proxmox_node_name is defined
+          - proxmox_node_ip is defined
+          - proxmox_template_id is defined
+          - vm_name is defined
+          - vm_id is defined
+          - vm_ip is defined
+        fail_msg: "Missing required parameters!"
+
+    - name: Display configuration
+      debug:
+        msg:
+          - "Creating VM on: {{ proxmox_node_name }}"
+          - "Node IP: {{ proxmox_node_ip }}"
+          - "VM Name: {{ vm_name }}"
+          - "VMID: {{ vm_id }}"
+          - "Template: {{ proxmox_template_id }}"
+
+    - name: Clone VM from template
+      include_tasks: tasks/clone-vm.yml
+
+    - name: Configure VM hardware and cloud-init
+      include_tasks: tasks/configure-vm.yml
+
+    - name: Resize VM disk
+      include_tasks: tasks/resize-disk.yml
+
+    - name: Start VM and wait for boot
+      include_tasks: tasks/start-vm.yml

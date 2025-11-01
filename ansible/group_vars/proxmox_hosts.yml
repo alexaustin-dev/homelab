@@ -1,0 +1,8 @@
+---
+ansible_user: root
+
+# Proxmox API credentials (from vault)
+proxmox_api_user: "{{ vault_proxmox_api_user }}"
+proxmox_api_token_id: "{{ vault_proxmox_api_token_id }}"
+proxmox_api_token_secret: "{{ vault_proxmox_api_token_secret }}"
+proxmox_api_host: "{{ vault_proxmox_api_host }}"

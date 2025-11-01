@@ -36,3 +36,9 @@ logs/
 # Temporary files
 tmp/
 temp/
+# Ansible specific
+ansible/inventory/hosts.yml
+ansible/group_vars/*/vault.yml
+ansible/host_vars/oreki-*.yml
+ansible/host_vars/proxmox*.yml
+*.retry

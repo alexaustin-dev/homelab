@@ -1,0 +1,6 @@
+---
+# Example vault file - Copy to vault.yml and customize with your values
+# Then encrypt with: ansible-vault encrypt group_vars/proxmox_hosts/vault.yml
+vault_proxmox_api_user: "ansible@pve"
+vault_proxmox_api_token_id: "your-token-id"
+vault_proxmox_api_token_secret: "your-token-secret-here"

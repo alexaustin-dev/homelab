@@ -1,0 +1,36 @@
+---
+- name: Start the VM via qm command
+  ansible.builtin.shell: |
+    ssh -o StrictHostKeyChecking=no -o BatchMode=yes root@{{ proxmox_node_ip }} \
+    "qm start {{ vm_id }}"
+  register: start_result
+  changed_when: true
+  failed_when: start_result.rc != 0 and 'already running' not in start_result.stderr
+
+- name: Display start result
+  debug:
+    var: start_result.stdout_lines
+  when: start_result.stdout_lines is defined
+
+- name: Wait for VM to be reachable via SSH
+  ansible.builtin.wait_for:
+    host: "{{ vm_ip | regex_replace('/.*', '') }}"
+    port: 22
+    timeout: 300
+    delay: 10
+    state: started
+  ignore_errors: yes
+  register: ssh_wait
+
+- name: Display success message
+  debug:
+    msg:
+      - "✅ VM {{ vm_name }} created successfully!"
+      - "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      - "VMID: {{ vm_id }}"
+      - "Node: {{ proxmox_node_name }}"
+      - "IP Address: {{ vm_ip }}"
+      - "Username: {{ final_vm_username }}"
+      - "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      - "Connect with: ssh {{ final_vm_username }}@{{ vm_ip | regex_replace('/.*', '') }}"
+      - "{% if ssh_wait.failed %}⚠️  Note: SSH not yet available, VM may still be booting{% endif %}"

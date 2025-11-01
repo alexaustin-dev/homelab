@@ -1,0 +1,28 @@
+---
+- name: Clone VM from cloud-init template
+  ansible.builtin.shell: |
+    ssh -o StrictHostKeyChecking=no -o BatchMode=yes root@{{ proxmox_node_ip }} \
+    "qm clone {{ proxmox_template_id }} {{ vm_id }} \
+    --name {{ vm_name }} \
+    --full \
+    --storage local-lvm"
+  register: vm_clone
+  changed_when: true
+  failed_when: vm_clone.rc != 0
+
+- name: Display clone result
+  debug:
+    var: vm_clone.stdout_lines
+
+- name: Wait for clone operation to complete
+  pause:
+    seconds: 5
+
+- name: Verify VM exists
+  ansible.builtin.shell: |
+    ssh -o StrictHostKeyChecking=no -o BatchMode=yes root@{{ proxmox_node_ip }} \
+    "qm status {{ vm_id }}"
+  register: vm_status
+  retries: 6
+  delay: 5
+  until: vm_status.rc == 0

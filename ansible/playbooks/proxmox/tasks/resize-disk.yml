@@ -1,0 +1,12 @@
+---
+- name: Resize disk to desired size
+  ansible.builtin.shell: |
+    ssh -o StrictHostKeyChecking=no -o BatchMode=yes root@{{ proxmox_node_ip }} \
+    "qm resize {{ vm_id }} scsi0 {{ final_vm_disk_size }}G"
+  register: resize_result
+  changed_when: "'resized' in resize_result.stdout or resize_result.rc == 0"
+  failed_when: resize_result.rc != 0 and 'already' not in resize_result.stderr
+
+- name: Display resize result
+  debug:
+    msg: "{{ resize_result.stdout_lines | default(['Disk resize completed']) }}"

@@ -1,0 +1,16 @@
+---
+- name: Test connection to all hosts
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Ping all hosts
+      ansible.builtin.ping:
+    
+    - name: Get hostname of each host
+      ansible.builtin.shell:
+        cmd: hostname
+      register: hostname_output
+    
+    - name: Display the hostname
+      ansible.builtin.debug:
+        msg: "This host is called: {{ hostname_output.stdout }}"

@@ -1,0 +1,31 @@
+---
+- name: Configure VM hardware via qm commands
+  ansible.builtin.shell: |
+    ssh -o StrictHostKeyChecking=no -o BatchMode=yes root@{{ proxmox_node_ip }} \
+    "qm set {{ vm_id }} \
+      --cores {{ final_vm_cores }} \
+      --memory {{ final_vm_memory }} \
+      --net0 virtio,bridge={{ final_vm_network_bridge }},tag={{ final_vm_network_tag }} \
+      --ipconfig0 ip={{ vm_ip }},gw={{ final_vm_gateway }} \
+      --nameserver {{ final_vm_nameserver }} \
+      --searchdomain {{ final_vm_searchdomain }} \
+      --ciuser {{ final_vm_username }} \
+      --cipassword {{ final_vm_password }}"
+  register: config_result
+  changed_when: true
+  failed_when: config_result.rc != 0
+
+- name: Display configuration result
+  debug:
+    var: config_result.stdout_lines
+  when: config_result.stdout_lines is defined
+
+- name: Set SSH key via qm command
+  ansible.builtin.shell: |
+    ssh -o StrictHostKeyChecking=no -o BatchMode=yes root@{{ proxmox_node_ip }} \
+    'qm set {{ vm_id }} --sshkeys <(echo "{{ ssh_public_key }}")'
+  args:
+    executable: /bin/bash
+  register: sshkey_result
+  changed_when: true
+  failed_when: sshkey_result.rc != 0
