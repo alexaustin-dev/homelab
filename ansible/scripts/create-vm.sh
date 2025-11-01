@@ -143,6 +143,25 @@ fi
 # Change to ansible directory
 cd "$(dirname "$0")/.." || exit 1
 
+# Prompt for vault password early (needed to read inventory)
+echo -e "${YELLOW}Ansible Vault Password:${NC}"
+read -s VAULT_PASSWORD
+echo ""
+
+# Create a temporary vault password file
+VAULT_PASS_FILE=$(mktemp)
+echo "$VAULT_PASSWORD" > "$VAULT_PASS_FILE"
+chmod 600 "$VAULT_PASS_FILE"
+
+# Cleanup function to remove temp file
+cleanup() {
+    rm -f "$VAULT_PASS_FILE"
+}
+trap cleanup EXIT
+
+# Export for ansible-inventory commands
+export ANSIBLE_VAULT_PASSWORD_FILE="$VAULT_PASS_FILE"
+
 # Function to prompt with default
 prompt_with_default() {
     local prompt=$1
@@ -371,7 +390,7 @@ echo ""
 
 # Run Ansible playbook with all parameters
 ansible-playbook playbooks/proxmox/create-vm-workflow.yml \
-    --ask-vault-pass \
+    --vault-password-file="$VAULT_PASS_FILE" \
     -e "proxmox_node_name=${PROXMOX_HOST}" \
     -e "proxmox_node_ip=${PROXMOX_IP}" \
     -e "proxmox_template_id=${TEMPLATE_ID}" \

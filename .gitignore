@@ -41,4 +41,13 @@ ansible/inventory/hosts.yml
 ansible/group_vars/*/vault.yml
 ansible/host_vars/oreki-*.yml
 ansible/host_vars/proxmox*.yml
+ansible/.env
 *.retry
+.vault_pass
+vault_pass.txt
+*vault_pass*
+
+# Ansible vault password files (common naming patterns)
+.vault-pass
+.vault_password
+vault-password.txt

@@ -1,35 +1,14 @@
 # Homelab Ansible
 
-Ansible automation for my Proxmox homelab. Handles VM provisioning and configuration.
+Ansible automation for my Proxmox homelab. Handles VM provisioning and configuration. Used Claude to help organize the README.md and the supporting docs.
+Also used Claude to help create the `create-vm.sh` script.
 
 ## What This Does
 
 - Automated VM creation on Proxmox nodes
-- Cloud-init configuration
+- Cloud-init configuration preconfigured on each VM.
 - Network setup (VLANs, static IPs)
 - SSH key deployment
-
-## Requirements
-
-- Ansible 2.9+
-- Python 3.x
-- SSH access to Proxmox nodes
-- Proxmox API token
-
-## Setup
-
-Copy example files and add your config:
-
-```bash
-cp inventory/hosts.yml.example inventory/hosts.yml
-cp group_vars/proxmox_hosts/vault.yml.example group_vars/proxmox_hosts/vault.yml
-```
-
-Edit with your IPs and credentials, then encrypt:
-
-```bash
-ansible-vault encrypt group_vars/proxmox_hosts/vault.yml
-```
 
 ## Usage
 
@@ -63,4 +42,4 @@ scripts/         - Helper scripts
 
 ## Notes
 
-Private configs (hosts.yml, vault.yml) are gitignored. Use the .example files as templates.
+Private configs (hosts.yml, vault.yml) are gitignored for security reasons.
