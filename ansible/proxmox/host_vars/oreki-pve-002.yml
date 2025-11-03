@@ -1,0 +1,4 @@
+---
+proxmox_node_name: "oreki-pve-002"
+proxmox_node_ip: "10.10.100.13"
+proxmox_template_id: 9002 # If you create one here
